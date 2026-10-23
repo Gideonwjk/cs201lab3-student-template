@@ -190,4 +190,18 @@ public class Q1Test {
           }
           return getpostOrder(node.left) + getpostOrder(node.right) + node.value + "-";
      }
+
+     public static class Node {
+          public int value;
+          public Node left;
+          public Node right;
+
+          public Node(int value){
+               this.left = null;
+               this.right = null;
+               this.value = value;
+          }
+
+          
+     }
 }
