@@ -92,10 +92,10 @@ public class Q1Test {
                     orders[1] = "Inorder";
                     postOrder = traversals[2];
                     orders[2] = "PostOrder";
-                    if(inOrderTemp.equals(inOrder) && postOrderTemp.equals(postOrder)){
+                    if(inOrderTemp.compareTo(inOrder) == 0 && postOrderTemp.compareTo(postOrder) == 0){
                          found = true;
                          break;
-                    }else if(inOrderTemp.equals(postOrder) && postOrderTemp.equals(inOrder)){
+                    }else if(inOrderTemp.compareTo(postOrder) == 0 && postOrderTemp.compareTo(inOrder) == 0){
                          String temp = inOrder;
                          inOrder = postOrder;
                          postOrder = temp;
@@ -109,10 +109,10 @@ public class Q1Test {
                     postOrder = traversals[2];
                     orders[0] = "Inorder";
                     orders[2] = "PostOrder";
-                    if(inOrderTemp.equals(inOrder) && postOrderTemp.equals(postOrder)){
+                    if(inOrderTemp.compareTo(inOrder) == 0 && postOrderTemp.compareTo(postOrder) == 0){
                          found = true;
                          break;
-                    }else if(inOrderTemp.equals(postOrder) && postOrderTemp.equals(inOrder)){
+                    }else if(inOrderTemp.compareTo(postOrder) == 0 && postOrderTemp.compareTo(inOrder) == 0){
                          String temp = inOrder;
                          inOrder = postOrder;
                          postOrder = temp;
@@ -126,10 +126,10 @@ public class Q1Test {
                     postOrder = traversals[1];
                     orders[0] = "Inorder";
                     orders[1] = "PostOrder";
-                    if(inOrderTemp.equals(inOrder) && postOrderTemp.equals(postOrder)){
+                    if(inOrderTemp.compareTo(inOrder) == 0 && postOrderTemp.compareTo(postOrder) == 0){
                          found = true;
                          break;
-                    }else if(inOrderTemp.equals(postOrder) && postOrderTemp.equals(inOrder)){
+                    }else if(inOrderTemp.compareTo(postOrder) == 0 && postOrderTemp.compareTo(inOrder) == 0){
                          String temp = inOrder;
                          inOrder = postOrder;
                          postOrder = temp;
