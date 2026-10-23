@@ -91,7 +91,7 @@ public class Q1Test {
                     inOrder = traversals[1];
                     orders[1] = "Inorder";
                     postOrder = traversals[2];
-                    orders[2] = "PostOrder";
+                    orders[2] = "Postorder";
                     if(inOrderTemp.compareTo(inOrder) == 0 && postOrderTemp.compareTo(postOrder) == 0){
                          found = true;
                          break;
@@ -99,7 +99,7 @@ public class Q1Test {
                          String temp = inOrder;
                          inOrder = postOrder;
                          postOrder = temp;
-                         orders[1] = "PostOrder";
+                         orders[1] = "Postorder";
                          orders[2] = "Inorder";
                          found = true;
                          break;
@@ -108,7 +108,7 @@ public class Q1Test {
                     inOrder = traversals[0];
                     postOrder = traversals[2];
                     orders[0] = "Inorder";
-                    orders[2] = "PostOrder";
+                    orders[2] = "Postorder";
                     if(inOrderTemp.compareTo(inOrder) == 0 && postOrderTemp.compareTo(postOrder) == 0){
                          found = true;
                          break;
@@ -117,7 +117,7 @@ public class Q1Test {
                          inOrder = postOrder;
                          postOrder = temp;
                          orders[2] = "Inorder";
-                         orders[0] = "PostOrder";
+                         orders[0] = "Postorder";
                          found = true;
                          break;
                     }
@@ -125,7 +125,7 @@ public class Q1Test {
                     inOrder = traversals[0];
                     postOrder = traversals[1];
                     orders[0] = "Inorder";
-                    orders[1] = "PostOrder";
+                    orders[1] = "Postorder";
                     if(inOrderTemp.compareTo(inOrder) == 0 && postOrderTemp.compareTo(postOrder) == 0){
                          found = true;
                          break;
@@ -134,7 +134,7 @@ public class Q1Test {
                          inOrder = postOrder;
                          postOrder = temp;
                          orders[1] = "Inorder";
-                         orders[0] = "PostOrder";
+                         orders[0] = "Postorder";
                          found = true;
                          break;
                     }
@@ -201,7 +201,5 @@ public class Q1Test {
                this.right = null;
                this.value = value;
           }
-
-          
      }
 }
