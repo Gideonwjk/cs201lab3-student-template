@@ -1,3 +1,5 @@
+import java.util.*;
+
 public class Q1Test {
      public static void main(String[] args) {
 
@@ -64,6 +66,128 @@ public class Q1Test {
 
       // write your codes here
      public static String verify(String traversal1, String traversal2, String traversal3){
-          return "";
+          if(traversal1.length() != traversal2.length() && traversal1.length() != traversal3.length()){
+               return "Invalid traversals";
+          }
+
+          String postOrder = null;
+          String inOrder = null;
+          String[] orders = new String[3];
+          String[] traversals = {traversal1, traversal2, traversal3};
+          boolean found = false;
+          for(int i = 0; i < traversals.length; i++){
+               orders[i] = "Preorder";
+               Node head = binaryTreeBuilder(traversals[i]);
+               String inOrderTemp = getinOrder(head);
+               String postOrderTemp = getpostOrder(head);
+               inOrderTemp = inOrderTemp.substring(0, inOrderTemp.length() - 1);
+               postOrderTemp = postOrderTemp.substring(0, postOrderTemp.length() - 1);
+               // System.out.println("PreOrder == " + traversals[i]);
+               // System.out.println("Inorder == " + inOrderTemp);
+               // System.out.println("PostOrder == " + postOrderTemp);
+               // System.out.println();
+               // System.out.println();
+               if(i == 0){
+                    inOrder = traversals[1];
+                    orders[1] = "Inorder";
+                    postOrder = traversals[2];
+                    orders[2] = "PostOrder";
+                    if(inOrderTemp.equals(inOrder) && postOrderTemp.equals(postOrder)){
+                         found = true;
+                         break;
+                    }else if(inOrderTemp.equals(postOrder) && postOrderTemp.equals(inOrder)){
+                         String temp = inOrder;
+                         inOrder = postOrder;
+                         postOrder = temp;
+                         orders[1] = "PostOrder";
+                         orders[2] = "Inorder";
+                         found = true;
+                         break;
+                    }
+               }else if(i == 1){
+                    inOrder = traversals[0];
+                    postOrder = traversals[2];
+                    orders[0] = "Inorder";
+                    orders[2] = "PostOrder";
+                    if(inOrderTemp.equals(inOrder) && postOrderTemp.equals(postOrder)){
+                         found = true;
+                         break;
+                    }else if(inOrderTemp.equals(postOrder) && postOrderTemp.equals(inOrder)){
+                         String temp = inOrder;
+                         inOrder = postOrder;
+                         postOrder = temp;
+                         orders[2] = "Inorder";
+                         orders[0] = "PostOrder";
+                         found = true;
+                         break;
+                    }
+               }else if(i == 2){
+                    inOrder = traversals[0];
+                    postOrder = traversals[1];
+                    orders[0] = "Inorder";
+                    orders[1] = "PostOrder";
+                    if(inOrderTemp.equals(inOrder) && postOrderTemp.equals(postOrder)){
+                         found = true;
+                         break;
+                    }else if(inOrderTemp.equals(postOrder) && postOrderTemp.equals(inOrder)){
+                         String temp = inOrder;
+                         inOrder = postOrder;
+                         postOrder = temp;
+                         orders[1] = "Inorder";
+                         orders[0] = "PostOrder";
+                         found = true;
+                         break;
+                    }
+               }
+          }
+          if(found){
+               return  "Traversal 1 - " + orders[0] + ", Traversal 2 - " + orders[1] + ", Traversal 3 - " + orders[2];
+          }
+
+          return "Invalid traversals";
+          
+     }
+
+     public static Node binaryTreeBuilder(String traversal){
+          String[] values = traversal.split("-");
+          Node head = new Node(Integer.parseInt(values[0]));
+          for(int i = 1; i < values.length; i++){
+               Node temp = new Node(Integer.parseInt(values[i]));
+               insert(head, temp);
+          }
+          return head;
+     }
+     public static void insert(Node head, Node inserting){
+          Node prev = null;
+          Node curr = head;
+          while(curr != null){
+               prev = curr;
+               if(inserting.value > curr.value){
+                    curr = curr.right;
+               }else{
+                    curr = curr.left;
+               }
+          }
+          
+          if(inserting.value > prev.value){
+               prev.right = inserting;
+          }else{
+               prev.left = inserting;
+          }
+          return;
+     }
+
+     public static String getinOrder(Node node){
+          if(node == null){
+               return "";
+          }
+          return getinOrder(node.left) + node.value + "-" + getinOrder(node.right);
+     }
+
+     public static String getpostOrder(Node node){
+          if(node == null){
+               return "";
+          }
+          return getpostOrder(node.left) + getpostOrder(node.right) + node.value + "-";
      }
 }
